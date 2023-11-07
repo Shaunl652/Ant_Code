@@ -4,7 +4,7 @@
 # Code designed to find the average time it takes for an ant starting as (0,0) to
 # reach food on a line
 # Uses a 2D probability distribution at various time steps to estimate the likelihood
-# of the ant finnding foot at a time t, then uses this function to find the probability
+# of the ant finding food at a time t, then uses this function to find the probability
 # that the ant will reach the final point at a time t
 # This final function can be approximated by a Lorentzian(?) which we can curve fit
 # to find the mean 
@@ -51,7 +51,7 @@ def grid_sum(grid,x,y,xlen,ylen,food_locs):
         total = grid[x,y]
     # First we check if the point x,y is on an edge otherwise looking to the side will cause issues
     # We also check that the point we are looking at isn't a food site as the 
-    # ant should't move from a food site
+    # ant shouldn't move from a food site
     if x==0 :
         if not_food(x+1,y,food_locs):
             total += grid[x+1,y]/4
@@ -186,7 +186,7 @@ def ant_func(axis_lims,food_locs,speed = 10,t_step = 1,N = 20,Plot=False):
 
 
 # =============================================================================
-# First we do probelm 1)
+# First we do problem 1)
 # Food is located on lines 20 from the origin in each direction
 # =============================================================================
 speed = 10
@@ -219,16 +219,16 @@ for i in range(1,ax_len+1):
 ans1,grid1 = ant_func(20, food1,speed=speed,t_step=t_step,N=N)
 
 # =============================================================================
-# Now we can difine problem 2
+# Now we can define problem 2
 # =============================================================================
 
 # Find the locations of the food
 def food_line(ax_lims):
     # We assume that we are using the default spacing and a square grid
-    # This will simplify everythong and allow us to have an arbirty grid size
+    # This will simplify everything and allow us to have an arbirty grid size
     
-    # Define the line as a function of array indicies
-    # Found the equaiton analytically via simulatenous equations
+    # Define the line as a function of array indices
+    # Found the equation analytically via simulatenous equations
     line = lambda x: x-1
 
     # We want to keep the default time steps and grid spacing
@@ -256,7 +256,7 @@ ans2,grid2 = ant_func(50, food2)
 
 # First we want a function that will make the food locations from a given function
 
-# This is the functiondefining the area where the food is
+# This is the function defining the area where the food is
 # It should be cacluated the edges of this boundry before hand and this should inform 
 # the edges of the grid
 def circle(x,y):
